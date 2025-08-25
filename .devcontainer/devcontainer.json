@@ -1,0 +1,12 @@
+{
+  "name": "Go DevContainer",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "extensions": [
+    "golang.go"
+  ],
+  "forwardPorts": [8080],
+  "remoteUser": "root"
+}
