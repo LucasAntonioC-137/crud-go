@@ -1,26 +1,29 @@
-# Imagem oficial do Go (versão estável)
-FROM golang:1.22-bullseye
+FROM golang:1.23
 
-# Definir diretório de trabalho dentro do container
+# Diretório de trabalho
 WORKDIR /workspace
 
-# Instalar dependências extras (útil para desenvolvimento)
+# Dependências úteis
 RUN apt-get update && apt-get install -y \
-    git \
-    zsh \
-    curl \
-    vim \
+    git zsh curl vim \
     && rm -rf /var/lib/apt/lists/*
 
-# Instalar Oh My Zsh (opcional, para um terminal mais agradável)
+# Docker Para Debian/Ubuntu
+RUN apt-get update && \
+    apt-get install -y docker.io && \
+    rm -rf /var/lib/apt/lists/*
+
+
+# Instalar Oh My Zsh
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended \
     && chsh -s $(which zsh)
 
 # Adicionar o GOPATH/bin ao PATH
 ENV PATH=$PATH:/go/bin
 
-# Expor a porta que o Go pode usar (ajuda em servidores web locais)
+# Expor porta do Go
 EXPOSE 8080
 
-# Comando padrão: abre o zsh
-CMD [ "zsh" ]
+# Mantém container ativo
+CMD ["sleep", "infinity"]
+ENTRYPOINT ["tail", "-f", "/dev/null"]

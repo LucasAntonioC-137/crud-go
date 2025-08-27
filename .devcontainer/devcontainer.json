@@ -1,12 +1,18 @@
 {
-  "name": "Go DevContainer",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": ".."
-  },
-  "extensions": [
-    "golang.go"
-  ],
-  "forwardPorts": [8080],
-  "remoteUser": "root"
+  "name": "Go + Mongo Dev",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      },
+      "extensions": [
+        "golang.go",
+        "mongodb.mongodb-vscode"
+      ]
+    }
+  }
 }
