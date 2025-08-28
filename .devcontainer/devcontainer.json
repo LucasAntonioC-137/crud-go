@@ -1,18 +1,41 @@
 {
-  "name": "Go + Mongo Dev",
-  "dockerComposeFile": "docker-compose.yml",
+  "name": "Go Dev Container",
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
   "service": "app",
   "workspaceFolder": "/workspace",
   "shutdownAction": "stopCompose",
   "customizations": {
     "vscode": {
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "zsh"
+        "go.toolsManagement.autoUpdate": true
       },
       "extensions": [
-        "golang.go",
-        "mongodb.mongodb-vscode"
+        "golang.go"
       ]
     }
   }
 }
+
+
+// {
+//   "name": "Go + Mongo Dev",
+//   "dockerComposeFile": "docker-compose.yml",
+//   "service": "app",
+//   "workspaceFolder": "/workspace",
+//   "shutdownAction": "stopCompose",
+//   "customizations": {
+//     "vscode": {
+//       "settings": {
+//         "terminal.integrated.defaultProfile.linux": "zsh"
+//       },
+//       "extensions": [
+//         "golang.go",
+//         "mongodb.mongodb-vscode"
+//       ]
+//     }
+//   }
+// }
+
+

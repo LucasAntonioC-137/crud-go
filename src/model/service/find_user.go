@@ -1,6 +1,7 @@
 package service
 
 import (
+
 	"github.com/LucasAntonioC-137/crud-go/src/configuration/logger"
 	"github.com/LucasAntonioC-137/crud-go/src/configuration/rest_err"
 	"github.com/LucasAntonioC-137/crud-go/src/model"
@@ -31,4 +32,18 @@ func (ud *userDomainService) FindUserByEmailService( email string) (model.UserDo
 	}	 	
 	
 	return userByEmailRepository, nil
+}
+
+func (ud *userDomainService) findUserByEmailAndPasswordService(
+	 email, password string) (model.UserDomainInterface, *rest_err.RestErr) {
+	logger.Info("Init findUserByEmailAndPassword service", zap.String("journey", "findUserByEmailAndPassword"))
+
+	userByEmailAndPasswordRepository, err := ud.userRepository.FindUserByEmailAndPassword(email, password)
+	if err != nil {
+		logger.Error("Error trying to call findUserByEmailAndPassword repository",err,
+		zap.String("journey", "FindUserByEmailAndPassowrd"))
+		return nil, err
+	}
+	
+	return userByEmailAndPasswordRepository, nil
 }

@@ -6,9 +6,9 @@ import (
 	"github.com/LucasAntonioC-137/crud-go/src/model/repository"
 )
 
-func NewUserDomainService( 
+func NewUserDomainService(
 	userRepository repository.UserRepository,
-	) UserDomainService {
+) UserDomainService {
 	return &userDomainService{userRepository}
 }
 
@@ -22,4 +22,5 @@ type UserDomainService interface {
 	FindUserByIDService(string) (model.UserDomainInterface, *rest_err.RestErr)
 	FindUserByEmailService(string) (model.UserDomainInterface, *rest_err.RestErr)
 	DeleteUserService(string) *rest_err.RestErr
+	LoginUserService(model.UserDomainInterface) (model.UserDomainInterface, *rest_err.RestErr)
 }

@@ -2,7 +2,6 @@ package rest_err
 
 import (
 	"net/http"
-	// "golang.org/x/text/message"
 )
 
 type RestErr struct {
@@ -72,3 +71,10 @@ func NewForbiddenError(message string) *RestErr {
 	}
 }
 
+func NewUnauthorizedError(message string) *RestErr {
+	return &RestErr{
+		Message: message,
+		Err: "unauthorized",
+		Code: http.StatusUnauthorized,
+	}
+}
