@@ -11,6 +11,7 @@ import (
 	"github.com/LucasAntonioC-137/crud-go/src/model/repository/entity"
 	"github.com/LucasAntonioC-137/crud-go/src/model/repository/entity/converter"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.uber.org/zap"
 )
@@ -65,7 +66,8 @@ func (ur * userRepository) FindUserByID(id string,
 
 	userEntity := &entity.UserEntity{}
 
-	filter := bson.D{{Key: "_id", Value: id}}
+	objectId, _ := primitive.ObjectIDFromHex(id)
+	filter := bson.D{{Key: "_id", Value: objectId}}
 	err := collection.FindOne(
 		context.Background(),
 		filter,
@@ -76,7 +78,7 @@ func (ur * userRepository) FindUserByID(id string,
 			errorMessage := fmt.Sprintf(
 				"User not found with this ID: %s", id)
 			logger.Error(errorMessage, err, 
-				zap.String("journey", "findUserByEmail"))
+				zap.String("journey", "findUserByID"))
 			return nil, rest_err.NewNotFoundError(errorMessage)
 		}
 		errorMessage := "Error trying to find user by ID"
