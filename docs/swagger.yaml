@@ -1,0 +1,10 @@
+host: localhost:8080
+info:
+  contact: {}
+  description: API for crud operations on users
+  title: Meu Primeiro CRUD em Go | Lucas
+  version: "1.0"
+paths: {}
+schemes:
+- http
+swagger: "2.0"

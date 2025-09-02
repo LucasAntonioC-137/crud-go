@@ -1,0 +1,14 @@
+{
+    "schemes": [
+        "http"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "API for crud operations on users",
+        "title": "Meu Primeiro CRUD em Go | Lucas",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "paths": {}
+}

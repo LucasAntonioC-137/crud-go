@@ -6,6 +6,7 @@
   "service": "app",
   "workspaceFolder": "/workspace",
   "shutdownAction": "stopCompose",
+  "runArgs": ["--network=host"],
   "customizations": {
     "vscode": {
       "settings": {
@@ -17,6 +18,7 @@
     }
   }
 }
+
 
 
 // {

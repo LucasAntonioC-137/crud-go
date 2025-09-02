@@ -1,0 +1,23 @@
+FROM golang:1.23 AS BUILDER
+
+WORKDIR /app
+
+COPY . . 
+
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on \
+ GOOS=linux go build -o meuprimeirocrudgo .
+
+FROM golang:1.23-alpine AS RUNNER
+
+RUN adduser -D lucas
+
+COPY --from=BUILDER /app/meuprimeirocrudgo .
+
+RUN chown -R lucas:lucas /app
+RUN chmod +x /app/meuprimeirocrudgo
+
+EXPOSE 8080
+
+USER lucas
+
+CMD ["/app/meuprimeirocrudgo"]
