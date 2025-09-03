@@ -20,14 +20,14 @@ type UserDomainInterface interface{
 }
 
 func NewUserDomain(
-	email, password, name string, age int8,
+	email, password, name string, age int8, password_expiration time.Time,
 ) UserDomainInterface {
 	return &userDomain{
 		email: email,
 		password: password,
 		name: name,
 		age: age,
-		password_expiration: time.Now().AddDate(0, 0, 90), // 90 dias de validade
+		password_expiration: password_expiration, // 90 dias de validade
 	}
 }
 
@@ -41,10 +41,11 @@ func NewUserUpdateDomain(
 }
 
 func NewUserLoginDomain(
-	email, password string,
+	email, password string, password_expiration time.Time,
 ) UserDomainInterface {
 	return &userDomain{
 		email: email,
 		password: password,
+		password_expiration: password_expiration,
 	}
 }

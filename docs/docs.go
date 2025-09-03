@@ -242,7 +242,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/request.UserLogin"
+                            "$ref": "#/definitions/request.UserLoginDoc"
                         }
                     }
                 ],
@@ -328,8 +328,7 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "request.UserLogin": {
-            "description": "Structure containing the necessary fields for user login",
+        "request.UserLoginDoc": {
             "type": "object",
             "required": [
                 "email",

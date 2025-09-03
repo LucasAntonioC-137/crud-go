@@ -18,7 +18,7 @@ import (
 // @Tags Authentication
 // @Accept json
 // @Produce json
-// @Param userLogin body request.UserLogin true "User login credentials"
+// @Param userLogin body request.UserLoginDoc true "User login credentials"
 // @Success 200 {object} response.UserResponse "Login successful, authentication token provided"
 // @Header 200 {string} Authorization "Authentication token"
 // @Failure 403 {object} rest_err.RestErr "Error: Invalid login credentials"
@@ -40,6 +40,7 @@ func (uc *userControllerInterface) LoginUser(c *gin.Context) {
 	domain := model.NewUserLoginDomain(
 		userRequest.Email,
 		userRequest.Password,
+		userRequest.PasswordExpiration,
 	)
 
 	domainResult, token, err := uc.service.LoginUserService(domain)

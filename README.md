@@ -4,7 +4,7 @@ This is a comprehensive guide for the "MeuPrimeiroCRUD em Go" project in Go, an 
 
 ## Information
 
-- **Title**: MeuPrimeiroCRUD em Go | HunCoding
+- **Title**: MeuPrimeiroCRUD em Go | Lucariom
 - **Version**: 1.0
 - **Host**: localhost:8080
 

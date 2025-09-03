@@ -21,8 +21,9 @@ func (ud *userDomainService) LoginUserService(userDomain model.UserDomainInterfa
 	if err != nil {
 		return nil, "", err
 	}
-
-	if time.Now().After(user.GetPasswordExpiration()) {
+	if user.GetPasswordExpiration().IsZero() {
+		// Permite login
+	} else if time.Now().After(user.GetPasswordExpiration()) {
 		return nil, "", rest_err.NewUnauthorizedError("senha expirada, por favor redefina sua senha")
 	}
 

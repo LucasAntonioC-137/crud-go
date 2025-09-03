@@ -1,6 +1,8 @@
 package service
 
 import (
+	"time"
+
 	"github.com/LucasAntonioC-137/crud-go/src/configuration/logger"
 	"github.com/LucasAntonioC-137/crud-go/src/configuration/rest_err"
 	"github.com/LucasAntonioC-137/crud-go/src/model"
@@ -16,6 +18,7 @@ func (ud *userDomainService) CreateUserService(userDomain model.UserDomainInterf
 		return nil, rest_err.NewBadRequestError("Email is already registered in another account")
 	}
 	userDomain.EncryptPassword()
+	userDomain.SetPasswordExpiration(time.Now().AddDate(0, 0, 1)) // AddDate(0, 0, 90)) 90 dias
 
 	userDomainRepository, err := ud.userRepository.CreateUser(userDomain)
 	if err != nil {

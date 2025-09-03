@@ -13,6 +13,7 @@ func ConvertEntityToDomain(
 		entity.Password,
 		entity.Name,
 		entity.Age,
+		entity.PasswordExpiration,
 	)
 
 	domain.SetID(entity.ID.Hex())

@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"log"
+	"time"
 
 	"github.com/LucasAntonioC-137/crud-go/src/configuration/database/mongodb"
 	"github.com/LucasAntonioC-137/crud-go/src/configuration/logger"
@@ -33,10 +34,20 @@ func main() {
 		return
 	}
 
-	userController := initDependencies(database)
+	userService, userController := initDependencies(database)
 	router := gin.Default()
 	// gin.SetMode(gin.ReleaseMode)
 	routes.InitRoutes(&router.RouterGroup, userController)
+
+	go func ()  {
+		ticker := time.NewTicker(15 * time.Second)
+		defer ticker.Stop()
+
+		for {
+			<-ticker.C
+			userService.CheckExpiringPasswords()
+		}
+	}()
 
 	if err := router.Run(":8080"); err != nil {
 		log.Fatal(err)
