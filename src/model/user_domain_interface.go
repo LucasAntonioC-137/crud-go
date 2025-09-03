@@ -1,6 +1,10 @@
 package model
 
-import "github.com/LucasAntonioC-137/crud-go/src/configuration/rest_err"
+import (
+	"time"
+
+	"github.com/LucasAntonioC-137/crud-go/src/configuration/rest_err"
+)
 
 type UserDomainInterface interface{
 	GetID() string
@@ -9,6 +13,8 @@ type UserDomainInterface interface{
 	GetAge() int8
 	GetName() string
 	SetID(string)
+	GetPasswordExpiration() time.Time
+	SetPasswordExpiration(time.Time)
 	EncryptPassword()
 	GenerateToken() (string, *rest_err.RestErr)
 }
@@ -21,6 +27,7 @@ func NewUserDomain(
 		password: password,
 		name: name,
 		age: age,
+		password_expiration: time.Now().AddDate(0, 0, 90), // 90 dias de validade
 	}
 }
 

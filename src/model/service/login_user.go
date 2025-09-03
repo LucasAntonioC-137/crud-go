@@ -1,7 +1,7 @@
 package service
 
 import (
-
+	"time"
 	"github.com/LucasAntonioC-137/crud-go/src/configuration/logger"
 	"github.com/LucasAntonioC-137/crud-go/src/configuration/rest_err"
 	"github.com/LucasAntonioC-137/crud-go/src/model"
@@ -20,6 +20,10 @@ func (ud *userDomainService) LoginUserService(userDomain model.UserDomainInterfa
 		userDomain.GetPassword())
 	if err != nil {
 		return nil, "", err
+	}
+
+	if time.Now().After(user.GetPasswordExpiration()) {
+		return nil, "", rest_err.NewUnauthorizedError("senha expirada, por favor redefina sua senha")
 	}
 
 	token, err := user.GenerateToken()

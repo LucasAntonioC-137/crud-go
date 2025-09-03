@@ -2,6 +2,7 @@ package controller
 
 import (
 	"net/http"
+	// "time"
 
 	"github.com/LucasAntonioC-137/crud-go/src/configuration/logger"
 	"github.com/LucasAntonioC-137/crud-go/src/configuration/validation"
@@ -16,6 +17,18 @@ var(
 	UserDomainInterface model.UserDomainInterface
 )
 
+// CreateUser Creates a new user
+// @Summary Create a new user
+// @Description Create a new user with the provided user information
+// @Tags Users
+// @Accept json
+// @Produce json
+// @Param userRequest body request.UserRequestCreate true "User information for registration"
+// @Param Authorization header string true "Insert your acess token" default(Bearer <Add access token here>)
+// @Success 200 {object} response.UserResponse
+// @Failure 400 {object} rest_err.RestErr
+// @Failure 500 {object} rest_err.RestErr
+// @Router /createUser [post]
 func (uc *userControllerInterface) CreateUser(c *gin.Context) {
 	logger.Info("Init CreateUser controller",
 		zap.String("journey", "createUser"),
