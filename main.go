@@ -40,7 +40,7 @@ func main() {
 	routes.InitRoutes(&router.RouterGroup, userController)
 
 	go func ()  {
-		ticker := time.NewTicker(15 * time.Second)
+		ticker := time.NewTicker(time.Minute)
 		defer ticker.Stop()
 
 		for {

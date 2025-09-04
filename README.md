@@ -22,13 +22,13 @@ Follow the steps below to install the project in your development environment:
 1. **Clone the repository:**
 
    ```
-   git clone https://github.com/HunCoding/meu-primeiro-crud-go.git
+   git clone https://github.com/LucasAntonioC-137/crud-go.git
    ```
 
 2. **Navigate to the project directory:**
 
    ```
-   cd meu-primeiro-crud-go
+   cd crud-go
    ```
 
 3. **Build the application using Docker Compose:**
@@ -53,6 +53,8 @@ The application will be accessible at `http://localhost:8080`.
 
 If you prefer, after running the project, visit: http://localhost:8080/swagger/index.html# to see and test all the route contracts.
 
+This project has been updated and can now only be used if you have a token. To generate the first token, you need to build the project using the init-mongo.js script. To create the admin login, use the login route with the email admin@crud.com and password admin123# to get the token in the header. All routes needs the token, except the /login.
+
 The MeuPrimeiroCRUD em Go application offers REST endpoints for creating, listing, updating, and deleting users. You can use tools like [curl](https://curl.se/) or [Postman](https://www.postman.com/) to test the endpoints. Here are some `curl` command examples for testing the endpoints:
 
 - **Create a user:**
@@ -74,52 +76,6 @@ The MeuPrimeiroCRUD em Go application offers REST endpoints for creating, listin
   ```
 
 Remember to adjust the commands according to your needs and requirements.
-
-## Data Models
-
-### request.UserLogin
-Structure containing the necessary fields for user login.
-
-- `email` (string, required): The user's email (must be a valid email address).
-- `password` (string, required): The user's password (must be at least 6 characters and contain at least one of the characters: !@#$%*).
-
-### request.UserRequest
-Structure containing the required fields for creating a new user.
-
-- `age` (integer, required): The user's age (must be between 1 and 140).
-- `email` (string, required): The user's email (must be a valid email address).
-- `name` (string, required): The user's name (must be at least 4 characters and at most 100 characters).
-- `password` (string, required): The user's password (must be at least 6 characters and contain at least one of the characters: !@#$%*).
-
-### request.UserUpdateRequest
-Structure containing fields to update user information.
-
-- `age` (integer, required): The user's age (must be between 1 and 140).
-- `name` (string, required): The user's name (must be at least 4 characters and at most 100 characters).
-
-### response.UserResponse
-Response structure containing user information.
-
-- `age` (integer): The user's age.
-- `email` (string): The user's email.
-- `id` (string): The user's unique ID.
-- `name` (string): The user's name.
-
-### rest_err.Causes
-Structure representing the causes of an error.
-
-- `field` (string): The field associated with the error cause.
-- `message` (string): Error message describing the cause.
-
-### rest_err.RestErr
-Structure describing why an error occurred.
-
-- `causes` (array of rest_err.Causes): Error causes.
-- `code` (integer): Error code.
-- `error` (string): Error description.
-- `message` (string): Error message.
-
-## Endpoints
 
 ### Note
 
@@ -180,10 +136,6 @@ The API offers the following endpoints:
       - 200: OK (User updated successfully)
       - 400: Bad Request (Request error)
       - 500: Internal Server Error (Internal server error)
-
-## Contributing
-
-If you wish to contribute to the MeuPrimeiroCRUD em Go project in Go, feel free to submit pull requests or report issues on the [official repository](https://github.com/HunCoding/meu-primeiro-crud-go.git).
 
 ## License
 
