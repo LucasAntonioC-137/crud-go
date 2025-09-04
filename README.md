@@ -1,10 +1,10 @@
-# MeuPrimeiroCRUD em Go
+# Meu CRUD em Go
 
-This is a comprehensive guide for the "MeuPrimeiroCRUD em Go" project in Go, an example application that implements the basic CRUD (Create, Read, Update, Delete) operations for users. The project includes a Dockerfile to facilitate running it in containers.
+This is a comprehensive guide for the "Meu CRUD em Go" project in Go, an example application that implements the basic CRUD (Create, Read, Update, Delete) operations for users. The project includes a Dockerfile to facilitate running it in containers.
 
 ## Information
 
-- **Title**: MeuPrimeiroCRUD em Go | Lucariom
+- **Title**: Meu CRUD em Go | Lucariom
 - **Version**: 1.0
 - **Host**: localhost:8080
 
@@ -39,10 +39,10 @@ Follow the steps below to install the project in your development environment:
 
 ## Running the Application
 
-After installation, you can run the MeuPrimeiroCRUD em Go application with the following command (if you want to run it directly with Golang):
+After installation, you can run the Meu CRUD em Go application with the following command (if you want to run it directly with Golang):
 
 ```
-docker container run --name meuprimeirocrudgo -p 27017:27017 -d mongo
+docker container run --name Meu CRUDgo -p 27017:27017 -d mongo
 
 go run main.go
 ```
@@ -55,7 +55,7 @@ If you prefer, after running the project, visit: http://localhost:8080/swagger/i
 
 This project has been updated and can now only be used if you have a token. To generate the first token, you need to build the project using the init-mongo.js script. To create the admin login, use the login route with the email admin@crud.com and password admin123# to get the token in the header. All routes needs the token, except the /login.
 
-The MeuPrimeiroCRUD em Go application offers REST endpoints for creating, listing, updating, and deleting users. You can use tools like [curl](https://curl.se/) or [Postman](https://www.postman.com/) to test the endpoints. Here are some `curl` command examples for testing the endpoints:
+The Meu CRUD em Go application offers REST endpoints for creating, listing, updating, and deleting users. You can use tools like [curl](https://curl.se/) or [Postman](https://www.postman.com/) to test the endpoints. Here are some `curl` command examples for testing the endpoints:
 
 - **Create a user:**
 
@@ -143,4 +143,4 @@ This project is distributed under the MIT license. Please refer to the LICENSE f
 
 ---
 
-We hope this Swagger documentation has been helpful in understanding and interacting with the API of the MeuPrimeiroCRUD em Go project in Go. If you have any questions or need additional support, please don't hesitate to reach out. Enjoy using the API!
+We hope this Swagger documentation has been helpful in understanding and interacting with the API of the Meu CRUD em Go project in Go. If you have any questions or need additional support, please don't hesitate to reach out. Enjoy using the API!
